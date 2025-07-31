@@ -1,0 +1,28 @@
+name: Markdown Lint (Python) 
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: # Triggers on any pull request
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+
+jobs:
+  lint-markdown:
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: Checkout code 
+      uses: actions/checkout@v4
+
+    - name: Set up Python 
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' # Use latest Python 3 version
+
+    - name: Install pymarkdownlnt 
+      run: pip install pymarkdownlnt
+
+    - name: Run Markdown Lint 
+      run: pymarkdownlnt . # Checks all Markdown files in the current directory
+      # Optionally, specify files/directories: pymarkdownlnt README.md docs/
