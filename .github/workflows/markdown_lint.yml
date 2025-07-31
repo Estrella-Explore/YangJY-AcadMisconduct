@@ -1,0 +1,43 @@
+name: Markdown Lint (Python) 
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: # Triggers on any pull request
+    branches:
+      - '*'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+
+jobs:
+  lint-markdown:
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: Checkout code 
+      uses: actions/checkout@v4
+
+    - name: Set up Python 
+      id: setup-python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' # Use latest Python 3 version
+
+    - name: Cache pip packages # Step 3: Cache pip's package cache directory
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip # This is the default directory where pip stores downloaded packages
+        key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pymarkdownlnt # Unique key for the cache
+        # The key combines OS, exact Python version, and the tool name.
+        # This ensures the cache is invalidated if the OS, Python version, or tool changes.
+        restore-keys: |
+          ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pymarkdownlnt- 
+        # Fallback to a less specific key if the exact one isn't found
+
+    - name: Install pymarkdownlnt 
+      run: pip install pymarkdownlnt
+
+    - name: Run Markdown Lint 
+      run: pymarkdownlnt scan . # Checks all Markdown files in the current directory
+      # Optionally, specify files/directories: pymarkdownlnt README.md docs/
+      continue-on-error: true
