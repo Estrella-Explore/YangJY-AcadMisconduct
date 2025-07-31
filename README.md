@@ -1,7 +1,10 @@
-# 🚀 WHU 杨景媛学术不端事件的详细信息 | WHU 楊景媛學術不端事件的詳細資料
+# 🚀 WHU 杨景媛学术不端事件的详细信息 
 
 > [!TIP]
-> 本仓库仅为目前杨景媛学术不端事件的整理，仓库管理者不对收集的信息的 100% 可靠性做担保，但会尽力分辨真假。
+> 本仓库仅为目前杨景媛学术不端事件的整理，仓库管理者不对收集的信息的可靠性做 100% 担保。
+
+> [!NOTE]
+> 本仓库的数据和资料还在补充中，很多参考资料尚未整理上传，如遇文件空缺可稍作等待或 Issue 提出。
 
 <div align="center">
   <a href="README-en_US.md"
@@ -32,8 +35,13 @@
 
 本节将提供对杨景媛学术不端事件的**核心概览**，包括主要指控类型、涉及作品以及事件的简要时间线。更多详细信息请参阅 [概览文件](disclosure/overview.md)。
 
-* **主要指控类型：**
-    - Working in process...
+* **主要学术不端指控类型：**
+    - 数据造假
+    - 文献抄袭
+    - 散点图强行拟合
+    - 主观臆断
+    - 编造法律
+    - 数据来源存疑
 
 * **涉及主要论文：**
     - [中印生育行为影响家庭暴力的经济学分析_杨景媛](./assets/中印生育行为影响家庭暴力的经济学分析_杨景媛.pdf)（杨景媛女士的硕士结业论文）
@@ -51,13 +59,13 @@
 * **[证据](disclosure/evidence/)**
     - 所有支持指控的**原始证据文件**，按类型分类。
     - 包括：
-        + **[论文分析](disclosure/evidence/Paper_Analysis/)**：论文比对图、批注版 PDF 等。
-        + **[截图证据](disclosure/evidence/Screenshots/)**：网页、邮件、聊天记录等相关截图。
-        + **[官方文件](disclosure/evidence/Official_Documents/)**：学校声明、举报信、处理结果等公开文件。
+        + **[论文分析](disclosure/evidence/paper_analysis/)**：论文比对图、批注版 PDF 等。
+        + **[截图证据](disclosure/evidence/screenshots/)**：网页、邮件、聊天记录等相关截图。
+        + **[官方文件](disclosure/evidence/official_documents/)**：学校声明、举报信、处理结果等公开文件。
         + **[数据篡改](disclosure/evidence/Data_Manipulation/)**：原始数据与伪造数据对比、统计分析异常等。
 * **[事件时间线](disclosure/timeline.md)**
     * 按时间顺序记录事件从发生到目前为止的关键节点和进展。
-* **[引用与外部资料](disclosure/REFERENCES.md)**
+* **[引用与外部资料](disclosure/references.md)**
     * 列出所有引用的外部新闻报道、学术规范、法律条文等信息来源。
 
 ---
@@ -83,6 +91,6 @@
 
 ## License
 
-本仓库引用的[杨景媛的硕士论文](./assets/中印生育行为影响家庭暴力的经济学分析_杨景媛.pdf)由杨景媛女士保有著作权；
+本仓库引用的 [杨景媛的硕士论文](./assets/中印生育行为影响家庭暴力的经济学分析_杨景媛.pdf) 由杨景媛女士保有著作权；
 
 知乎答主内容根据 CC-BY-SA 4.0 获取授权，其余的内容根据 [MIT License](LICENSE) 开放。
