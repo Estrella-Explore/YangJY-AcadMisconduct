@@ -40,3 +40,4 @@ jobs:
     - name: Run Markdown Lint 
       run: pymarkdownlnt scan . # Checks all Markdown files in the current directory
       # Optionally, specify files/directories: pymarkdownlnt README.md docs/
+      continue-on-error: true

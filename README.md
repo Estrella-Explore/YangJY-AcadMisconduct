@@ -51,10 +51,10 @@
 * **[证据](disclosure/evidence/)**
     - 所有支持指控的**原始证据文件**，按类型分类。
     - 包括：
-        * **[论文分析](disclosure/evidence/Paper_Analysis/)**：论文比对图、批注版 PDF 等。
-        * **[截图证据](disclosure/evidence/Screenshots/)**：网页、邮件、聊天记录等相关截图。
-        * **[官方文件](disclosure/evidence/Official_Documents/)**：学校声明、举报信、处理结果等公开文件。
-        * **[数据篡改](disclosure/evidence/Data_Manipulation/)**：原始数据与伪造数据对比、统计分析异常等。
+        + **[论文分析](disclosure/evidence/Paper_Analysis/)**：论文比对图、批注版 PDF 等。
+        + **[截图证据](disclosure/evidence/Screenshots/)**：网页、邮件、聊天记录等相关截图。
+        + **[官方文件](disclosure/evidence/Official_Documents/)**：学校声明、举报信、处理结果等公开文件。
+        + **[数据篡改](disclosure/evidence/Data_Manipulation/)**：原始数据与伪造数据对比、统计分析异常等。
 * **[事件时间线](disclosure/timeline.md)**
     * 按时间顺序记录事件从发生到目前为止的关键节点和进展。
 * **[引用与外部资料](disclosure/REFERENCES.md)**
