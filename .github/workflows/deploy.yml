@@ -43,7 +43,7 @@ jobs:
       - name: Upload artifact
         # 这个步骤只在 'main' 分支被 push 时执行，PR 阶段不执行
         if: github.event_name == 'push'
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: docs/.vitepress/dist
 
