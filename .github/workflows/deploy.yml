@@ -38,9 +38,8 @@ jobs:
       - name: Archive build output
         uses: actions/upload-pages-artifact@v3
         with:
-          # 此处保持 "github-pages"
           name: github-pages
-          path: docs/.vitepress/dist
+          path: .vitepress/dist
 
   deploy-production:
     needs: build
