@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "docs:build": "vitepress build"
+    "docs:build": "cp README.md index.md && vitepress build"
   },
   "devDependencies": {
     "vitepress": "^1.0.0-rc.20",
