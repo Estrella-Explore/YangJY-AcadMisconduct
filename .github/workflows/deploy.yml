@@ -10,12 +10,11 @@ on:
       - main # 在有 PR 提交到 main 分支时触发
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pages: write
-      id-token: write
+      contents: read
+      pull-requests: write # 增加此权限，用于在 PR 中添加评论
 
     steps:
       - name: Checkout
@@ -35,20 +34,38 @@ jobs:
       - name: Build VitePress site
         run: npm run docs:build
 
+      - name: Archive build output
+        uses: actions/upload-artifact@v3
+        with:
+          name: vitepress-build-output
+          path: docs/.vitepress/dist
+
+  deploy-to-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    # 仅当合并到 main 分支时才进行部署
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
       - name: Setup Pages
-        # 这个步骤只在 'main' 分支被 push 时执行，PR 阶段不执行
-        if: github.event_name == 'push'
         uses: actions/configure-pages@v3
 
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: vitepress-build-output
+          path: docs/.vitepress/dist
+
       - name: Upload artifact
-        # 这个步骤只在 'main' 分支被 push 时执行，PR 阶段不执行
-        if: github.event_name == 'push'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3 # 使用 v3，因为 v4 集成更强，但 v3 更稳定
         with:
           path: docs/.vitepress/dist
 
       - name: Deploy to GitHub Pages
-        # 这个步骤只在 'main' 分支被 push 时执行，PR 阶段不执行
-        if: github.event_name == 'push'
         id: deployment
         uses: actions/deploy-pages@v2
