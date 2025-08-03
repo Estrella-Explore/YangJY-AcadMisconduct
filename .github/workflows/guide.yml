@@ -1,4 +1,4 @@
-name: Welcome to new contributors
+name: tributorsde to new contributors
 
 on: [pull_request_target, issues]
 
