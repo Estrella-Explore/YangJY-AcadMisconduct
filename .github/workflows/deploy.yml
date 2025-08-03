@@ -35,7 +35,7 @@ jobs:
         run: npm run docs:build
 
       - name: Archive build output
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: vitepress-build-output
           path: docs/.vitepress/dist
@@ -62,7 +62,7 @@ jobs:
           path: docs/.vitepress/dist
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # 使用 v3，因为 v4 集成更强，但 v3 更稳定
+        uses: actions/upload-pages-artifact@v3 
         with:
           path: docs/.vitepress/dist
 
