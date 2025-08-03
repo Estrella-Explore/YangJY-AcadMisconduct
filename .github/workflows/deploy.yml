@@ -7,7 +7,7 @@ on:
 
   pull_request:
     branches:
-      - main # 在有 PR 提交到 main 分支时触发
+      - '*'
 
 jobs:
   build:
