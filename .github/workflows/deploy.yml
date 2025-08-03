@@ -1,0 +1,72 @@
+name: Deploy VitePress site to Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*' # 匹配所有分支的 Pull Request
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  pull-requests: write # 为 PR 预览部署添加权限
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build VitePress site
+        run: npm run docs:build
+
+      - name: Archive build output
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: .vitepress/dist
+
+  deploy-production:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # fix: 移除下载工件的步骤，因为 upload-pages-artifact 会自动处理
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-preview:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          token: ${{ github.token }}
+
+      - name: Deploy to GitHub Pages Preview
+        id: deployment
+        uses: actions/deploy-pages@v4
