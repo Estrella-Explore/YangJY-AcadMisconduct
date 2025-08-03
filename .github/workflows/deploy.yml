@@ -38,7 +38,7 @@ jobs:
       - name: Archive build output
         uses: actions/upload-artifact@v4
         with:
-          name: vitepress-build-output
+          name: github-pages
           path: docs/.vitepress/dist
 
   # 正式部署任务：只在合并到 main 分支后运行
