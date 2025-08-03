@@ -1,6 +1,7 @@
 // .vitepress/config.js
 export default {
   ignoreDeadLinks: true,
+  base: 'YangJY-AcadMisconduct',
   title: '杨景媛学术不端',
   description: '杨景媛硕士论文学术不端事件一条龙',
   themeConfig: {
