@@ -38,10 +38,10 @@ jobs:
       - name: Archive build output
         uses: actions/upload-artifact@v4
         with:
+          # 此处保持 "github-pages"
           name: github-pages
           path: docs/.vitepress/dist
 
-  # 正式部署任务：只在合并到 main 分支后运行
   deploy-production:
     needs: build
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: vitepress-build-output
+          name: github-pages
           path: docs/.vitepress/dist
 
       - name: Setup Pages
@@ -63,7 +63,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  # 预览部署任务：只在有 PR 提交时运行
   deploy-preview:
     needs: build
     runs-on: ubuntu-latest
@@ -72,7 +71,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: vitepress-build-output
+          name: github-pages
           path: docs/.vitepress/dist
 
       - name: Setup Pages
@@ -80,6 +79,6 @@ jobs:
         with:
           token: ${{ github.token }}
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages Preview
         id: deployment
         uses: actions/deploy-pages@v4
