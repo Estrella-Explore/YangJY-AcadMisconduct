@@ -3,27 +3,28 @@ name: Deploy VitePress site to Pages
 on:
   push:
     branches:
-      - main # 在 main 分支有新的提交时触发
-
+      - main
   pull_request:
     branches:
-      - '*'
+      - '*' # 匹配所有分支的 Pull Request
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  pull-requests: write # 为 PR 预览部署添加权限
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write # 增加此权限，用于在 PR 中添加评论
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -40,32 +41,45 @@ jobs:
           name: vitepress-build-output
           path: docs/.vitepress/dist
 
-  deploy-to-pages:
+  # 正式部署任务：只在合并到 main 分支后运行
+  deploy-production:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-
-    # 仅当合并到 main 分支时才进行部署
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
       - name: Download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: vitepress-build-output
           path: docs/.vitepress/dist
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 
-        with:
-          path: docs/.vitepress/dist
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
+
+  # 预览部署任务：只在有 PR 提交时运行
+  deploy-preview:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vitepress-build-output
+          path: docs/.vitepress/dist
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          token: ${{ github.token }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
