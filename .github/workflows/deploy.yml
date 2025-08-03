@@ -1,0 +1,54 @@
+name: Deploy VitePress site to Pages
+
+on:
+  push:
+    branches:
+      - main # 在 main 分支有新的提交时触发
+
+  pull_request:
+    branches:
+      - main # 在有 PR 提交到 main 分支时触发
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build VitePress site
+        run: npm run docs:build
+
+      - name: Setup Pages
+        # 这个步骤只在 'main' 分支被 push 时执行，PR 阶段不执行
+        if: github.event_name == 'push'
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        # 这个步骤只在 'main' 分支被 push 时执行，PR 阶段不执行
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs/.vitepress/dist
+
+      - name: Deploy to GitHub Pages
+        # 这个步骤只在 'main' 分支被 push 时执行，PR 阶段不执行
+        if: github.event_name == 'push'
+        id: deployment
+        uses: actions/deploy-pages@v2
