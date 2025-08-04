@@ -51,7 +51,7 @@
     - 数据来源存疑
 
 * **涉及主要论文：**
-    - [中印生育行为影响家庭暴力的经济学分析_杨景媛](./assets/中印生育行为影响家庭暴力的经济学分析_杨景媛.pdf)（杨景媛女士的硕士结业论文）
+    - [中印生育行为影响家庭暴力的经济学分析_杨景媛](https://github.com/Estrella-Explore/YangJY-AcadMisconduct/blob/main/assets/%E4%B8%AD%E5%8D%B0%E7%94%9F%E8%82%B2%E8%A1%8C%E4%B8%BA%E5%BD%B1%E5%93%8D%E5%AE%B6%E5%BA%AD%E6%9A%B4%E5%8A%9B%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%88%86%E6%9E%90_%E6%9D%A8%E6%99%AF%E5%AA%9B.pdf)（杨景媛女士的硕士结业论文）
 
 ---
 
@@ -91,6 +91,6 @@
 
 ## License
 
-本仓库引用的 [杨景媛的硕士论文](./assets/中印生育行为影响家庭暴力的经济学分析_杨景媛.pdf) 由杨景媛女士保有著作权；
+本仓库引用的 [杨景媛的硕士论文](https://github.com/Estrella-Explore/YangJY-AcadMisconduct/blob/main/assets/%E4%B8%AD%E5%8D%B0%E7%94%9F%E8%82%B2%E8%A1%8C%E4%B8%BA%E5%BD%B1%E5%93%8D%E5%AE%B6%E5%BA%AD%E6%9A%B4%E5%8A%9B%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%88%86%E6%9E%90_%E6%9D%A8%E6%99%AF%E5%AA%9B.pdf) 由杨景媛女士保有著作权；
 
 知乎答主内容根据 CC-BY-SA 4.0 获取授权，其余的内容根据 [MIT License](LICENSE) 开放。
