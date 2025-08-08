@@ -6,16 +6,16 @@
 > [!NOTE]
 > 本仓库的数据和资料还在补充中，很多参考资料尚未整理上传，如遇文件空缺可稍作等待或 Issue 提出。
 
-- [x] 简体中文 README
-- [ ] 繁体中文 README
-- [ ] 英文 README
-- [x] [Timeline](./disclosure/timeline.md)
-- [ ] [overview.md](./disclosure/overview.md)
-- [ ] allegations.md
-- [ ] references.md
+- ✅ 简体中文 README
+- ❎ 繁体中文 README
+- ❎ 英文 README
+- ✅ [Timeline](./disclosure/timeline.md)
+- ✅ [Allegations](./disclosure/allegations.md)
+- ❎ references.md
+- ✅ [Report](./report.html)
 
 <div align="center">
-  <a href="README-en_US.md"
+  <a href="README-en_US"
      style="
        display: inline-block;
        padding: 5px 12px;
@@ -52,7 +52,7 @@
     - 数据来源存疑
 
 * **涉及主要论文：**
-    - [中印生育行为影响家庭暴力的经济学分析_杨景媛](./assets/中印生育行为影响家庭暴力的经济学分析_杨景媛.pdf)（杨景媛女士的硕士结业论文）
+    - [中印生育行为影响家庭暴力的经济学分析_杨景媛](https://raw.githubusercontent.com/Estrella-Explore/YangJY-AcadMisconduct/refs/heads/main/assets/%E4%B8%AD%E5%8D%B0%E7%94%9F%E8%82%B2%E8%A1%8C%E4%B8%BA%E5%BD%B1%E5%93%8D%E5%AE%B6%E5%BA%AD%E6%9A%B4%E5%8A%9B%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%88%86%E6%9E%90_%E6%9D%A8%E6%99%AF%E5%AA%9B.pdf)（杨景媛女士的硕士结业论文）
 
 ---
 
@@ -60,19 +60,12 @@
 
 为了方便您快速定位信息，本仓库内容结构如下：
 
-* **[事件概览](disclosure/overview.md)**
+* **[事件概览与时间线](disclosure/timeline.md)**
     - 对事件的宏观描述，包括背景、主要涉事方和核心问题总结。
 * **[详细学术不端指控](disclosure/allegations.md)**
-    - 逐条列举具体的学术不端指控，每条指控都将链接到相应的证据。
+    - 逐条分析具体的学术不端行为，每条指控都附有相应的证据。
 * **[证据](disclosure/evidence/)**
-    - 所有支持指控的**原始证据文件**，按类型分类。
-    - 包括：
-        + **[论文分析](disclosure/evidence/paper_analysis/)**：论文比对图、批注版 PDF 等。
-        + **[截图证据](disclosure/evidence/screenshots/)**：网页、邮件、聊天记录等相关截图。
-        + **[官方文件](disclosure/evidence/official_documents/)**：学校声明、举报信、处理结果等公开文件。
-        + **[数据篡改](disclosure/evidence/Data_Manipulation/)**：原始数据与伪造数据对比、统计分析异常等。
-* **[事件时间线](disclosure/timeline.md)**
-    * 按时间顺序记录事件从发生到目前为止的关键节点和进展。
+    - 所有支持学术不端指控的**原始证据文件**，按类型分类。
 * **[引用与外部资料](disclosure/references.md)**
     * 列出所有引用的外部新闻报道、学术规范、法律条文等信息来源。
 
@@ -80,10 +73,10 @@
 
 ## 💡 如何浏览本仓库
 
-1. **从概览开始：** 建议首先阅读 [overview.md](disclosure/overview.md) 以获得事件的整体印象。
+1. **从概览开始：** 建议首先阅读 [timeline.md](disclosure/timeline.md) 以获得事件的整体印象。
 2. **深入指控：** 接着查阅 [allegations.md](disclosure/allegations.md) 了解具体的指控细节。
-3. **验证证据：** 在 [allegations.md](disclosure/allegations.md) 中，点击链接即可跳转到 [evidence/](disclosure/evidence/) 目录中对应的证据文件。
-4. **了解过程：** [timeline.md](disclosure/timeline.md) 将帮助您理解事件发展过程。
+3. **验证证据：** 在 [allegations.md](disclosure/allegations.md) 中，阅读具体的学术不端指控。
+
 
 ---
 
@@ -99,6 +92,6 @@
 
 ## License
 
-本仓库引用的 [杨景媛的硕士论文](./assets/中印生育行为影响家庭暴力的经济学分析_杨景媛.pdf) 由杨景媛女士保有著作权；
+本仓库引用的 [杨景媛的硕士论文](https://raw.githubusercontent.com/Estrella-Explore/YangJY-AcadMisconduct/refs/heads/main/assets/%E4%B8%AD%E5%8D%B0%E7%94%9F%E8%82%B2%E8%A1%8C%E4%B8%BA%E5%BD%B1%E5%93%8D%E5%AE%B6%E5%BA%AD%E6%9A%B4%E5%8A%9B%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%88%86%E6%9E%90_%E6%9D%A8%E6%99%AF%E5%AA%9B.pdf) 由杨景媛女士保有著作权；
 
 知乎答主内容根据 CC-BY-SA 4.0 获取授权，其余的内容根据 [MIT License](LICENSE) 开放。

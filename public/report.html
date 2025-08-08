@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yjy诬告案件举报平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0b6684',
+                        secondary: '#1491b3',
+                        neutral: '#f0f4f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+
+    </script>
+    <style type="text/tailwindcss">
+
+        .download-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #0056b3;
+        }
+
+
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .shadow-soft {
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            }
+            .transition-standard {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- 头部 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-center">yjy诬告事件举报中心导航页面</h1>
+            <p class="text-center mt-2 text-blue-100 opacity-90">高效地提交您的举报信息</p>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <div class="flex flex-col md:flex-row gap-6 lg:gap-8">
+        
+        <!-- 左侧信息区 - 深色蓝色背景版本 -->
+        
+  <style>
+    /* 整体区域样式 */
+    .evidence-section {
+      width: 100%;
+      /* 在小屏幕下占满宽度，大屏下按比例 */
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #0B6684;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    /* 标题和按钮所在的顶部区域样式 */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .title i {
+      margin-right: 8px;
+    }
+
+    .open-btn {
+      display: flex;
+      align-items: center;
+      background-color: #084B61;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .open-btn:hover {
+      background-color: #063849;
+    }
+
+    .open-btn i {
+      margin-right: 6px;
+    }
+
+    /* iframe 容器样式，用于控制 iframe 显示区域 */
+    .iframe-container {
+      width: 100%;
+      overflow: hidden;
+      border-top: 1px solid #084B61;
+    }
+
+    .iframe-container iframe {
+      width: 100%;
+      min-height: 600px;
+      border: none;
+      /* 去掉 iframe 自身边框 */
+      display: block;
+      /* 消除底部可能的空白间隙 */
+    }
+  </style>
+
+  <div class="evidence-section">
+    <div class="top-bar">
+      <div class="title">
+        <i class="fa fa-folder-open"></i>
+        证据合集
+      </div>
+      <a href="https://yangjy.dpdns.org/foshuhjkserjk/evidence/" target="_blank" class="open-btn">
+        <i class="fa fa-external-link"></i>
+        在新标签页中打开
+      </a>
+    </div>
+    <div class="iframe-container">
+      <iframe src="https://yangjy.dpdns.org/foshuhjkserjk/evidence/"></iframe>
+    </div>
+  </div>            <!-- 右侧举报格式区 -->
+            <div class="w-full md:w-3/5 bg-white rounded-xl shadow-soft p-6 md:p-8">
+                <div class="report-format">
+                    <div class="title-row flex flex-wrap items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">举报文案</h2>
+                        <button id="copyBtn" class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-lg flex items-center transition-standard mt-2 sm:mt-0">
+                            <i class="fa fa-copy mr-2"></i>点击下载
+                        </button>
+                    </div>
+                    
+                    <!-- 要复制的文本内容 -->
+                    <div id="copyContent" class="bg-neutral p-5 rounded-lg mb-8 leading-relaxed text-gray-700">
+                        <p>学术不端行为举报信：</p>
+                        <br>
+                        <p>举报信1:（适用于向境内有关部分举报）.docx</p>
+                        <a class="download-btn fa fa-copy mr-2" href="https://yangjy.dpdns.org/foshuhjkserjk/evidence/%E6%9D%A8%E5%B0%8F%E5%A7%90%E4%B8%BE%E6%8A%A5%E6%9D%90%E6%96%99%28%E5%AD%A6%E6%9C%AF%E4%B8%8D%E7%AB%AF%E9%83%A8%E5%88%86%29/%E4%B8%BE%E6%8A%A5%E4%BF%A1/%E4%B8%BE%E6%8A%A5%E4%BF%A11%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%91%E5%A2%83%E5%86%85%E6%9C%89%E5%85%B3%E9%83%A8%E5%88%86%E4%B8%BE%E6%8A%A5%EF%BC%89.docx" download="学术不端行为举报信.doct">  点击下载</a>
+                        <p>举报信2（适用于向教育部和武大学术委员会进行举报）.docx</p>
+                        <a class="download-btn fa fa-copy mr-2" href="https://yangjy.dpdns.org/foshuhjkserjk/evidence/%E6%9D%A8%E5%B0%8F%E5%A7%90%E4%B8%BE%E6%8A%A5%E6%9D%90%E6%96%99%28%E5%AD%A6%E6%9C%AF%E4%B8%8D%E7%AB%AF%E9%83%A8%E5%88%86%29/%E4%B8%BE%E6%8A%A5%E4%BF%A1/%E4%B8%BE%E6%8A%A5%E4%BF%A12%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%91%E6%95%99%E8%82%B2%E9%83%A8%E5%92%8C%E6%AD%A6%E5%A4%A7%E5%AD%A6%E6%9C%AF%E5%A7%94%E5%91%98%E4%BC%9A%E8%BF%9B%E8%A1%8C%E4%B8%BE%E6%8A%A5%EF%BC%89.docx" download="学术不端行为举报信.doct">  点击下载</a>
+                        <p>举报信3（繁体和英文版-适用于向香港有关部门）.docx</p>
+                        <a class="download-btn fa fa-copy mr-2" href="https://yangjy.dpdns.org/foshuhjkserjk/evidence/%E6%9D%A8%E5%B0%8F%E5%A7%90%E4%B8%BE%E6%8A%A5%E6%9D%90%E6%96%99%28%E5%AD%A6%E6%9C%AF%E4%B8%8D%E7%AB%AF%E9%83%A8%E5%88%86%29/%E4%B8%BE%E6%8A%A5%E4%BF%A1/%E4%B8%BE%E6%8A%A5%E4%BF%A13%EF%BC%88%E7%B9%81%E4%BD%93%E5%92%8C%E8%8B%B1%E6%96%87%E7%89%88-%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%91%E9%A6%99%E6%B8%AF%E6%9C%89%E5%85%B3%E9%83%A8%E9%97%A8%EF%BC%89.docx" download="学术不端行为举报信.doct">  点击下载</a>
+                        <p>举报信4（含有重要部门的联系方式）.docx</p>
+                        <a class="download-btn fa fa-copy mr-2" href="https://yangjy.dpdns.org/foshuhjkserjk/evidence/%E6%9D%A8%E5%B0%8F%E5%A7%90%E4%B8%BE%E6%8A%A5%E6%9D%90%E6%96%99%28%E5%AD%A6%E6%9C%AF%E4%B8%8D%E7%AB%AF%E9%83%A8%E5%88%86%29/%E4%B8%BE%E6%8A%A5%E4%BF%A1/%E4%B8%BE%E6%8A%A5%E4%BF%A14%EF%BC%88%E5%90%AB%E6%9C%89%E9%87%8D%E8%A6%81%E9%83%A8%E9%97%A8%E7%9A%84%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%EF%BC%89.docx" download="学术不端行为举报信.doct"> 点击下载</a>
+                        <p>举报信5（适用于举报杨某学术不足）.pdf</p>
+                        <a class="download-btn fa fa-copy mr-2" href="https://yangjy.dpdns.org/foshuhjkserjk/evidence/%E6%9D%A8%E5%B0%8F%E5%A7%90%E4%B8%BE%E6%8A%A5%E6%9D%90%E6%96%99%28%E5%AD%A6%E6%9C%AF%E4%B8%8D%E7%AB%AF%E9%83%A8%E5%88%86%29/%E4%B8%BE%E6%8A%A5%E4%BF%A1/%E4%B8%BE%E6%8A%A5%E4%BF%A15%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E%E4%B8%BE%E6%8A%A5%E6%9D%A8%E6%9F%90%E5%AD%A6%E6%9C%AF%E4%B8%8D%E8%B6%B3%EF%BC%89.pdf" download="学术不端行为举报信.doct"> 点击下载</a>
+
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">举报提交地址</h3>
+                    
+                    <!-- 举报地址列表 -->
+                    <div class="space-y-4">
+                        
+                        
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">教育部学位与研究生教育发展中心监督举报信箱</div>
+                                <div class="url text-gray-600 break-all">jdjb@cdgdc.edu.cn</div>
+                            </div>
+                            <a href="mailto:jdjb@cdgdc.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">教育部学位管理与研究生教育司</div>
+                                <div class="url text-gray-600 break-all">xwbpyc@moe.edu.cn</div>
+                            </div>
+                            <a href="mailto:xwbpyc@moe.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                         <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">国务院学位委员会办公室</div>
+                                <div class="url text-gray-600 break-all">gn_xwb@moe.edu.cn xueweichu@moe.edu.cn</div>
+                            </div>
+                            <a href="mailto:gn_xwb@moe.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">武汉大学学风建设领导小组办公室</div>
+                                <div class="url text-gray-600 break-all">举报电话:027-68754409　电子邮箱:xsxf@whu.edu.cn</div>
+                            </div>
+                            <a href="mailto:xsxf@whu.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">黄泰岩 武汉大学党委书记</div>
+                                <div class="url text-gray-600 break-all">电子邮箱:sjxx@whu.edu.cn</div>
+                            </div>
+                            <a href="mailto:sjxx@whu.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">张平文 武汉大学校长</div>
+                                <div class="url text-gray-600 break-all">电子邮箱:xzxx@whu.edu.cn</div>
+                            </div>
+                            <a href="mailto:xzxx@whu.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">武汉大学 </div>
+                                <div class="url text-gray-600 break-all">接访电话:027-68752059 </div>
+                            </div>
+                
+                                <span>打电话</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">武汉大学 </div>
+                                <div class="url text-gray-600">地址:湖北省武汉市武昌区八一路299号 邮编:430073</div>
+                            </div>
+                            <a href="https://maps.baidu.com/search/湖北省武汉市武昌区八一路299号" target="_blank" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>查看地图</span>
+                                <i class="fa fa-map-marker ml-2"></i>
+                            </a>
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">武汉大学经济与管理学院 </div>
+                                <div class="url text-gray-600 break-all">学院邮箱：EMS@whu.edu.cn </div>
+                            </div>
+                            <a href="mailto:EMS@whu.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">武汉大学经济与管理学院 </div>
+                                <div class="url text-gray-600 break-all">学院纪检邮箱：CDIEMS@whu.edu.cn</div>
+                            </div>
+                            <a href="mailto:CDIEMS@whu.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+                        
+                        
+
+                        </div>
+
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">武汉大学经济与管理学院 </div>
+                                <div class="url text-gray-600">地址：中国 武汉 武汉珞珈山 </div>
+                            </div>
+                            <a href="https://maps.baidu.com/search/湖北省武汉市武汉珞珈山" target="_blank" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>查看地图</span>
+                                <i class="fa fa-map-marker ml-2"></i>
+                            </a>
+                        </div>
+
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">武汉大学经济与管理学院 </div>
+                                <div class="url text-gray-600 break-all">传真：027-68754150</div>
+                            </div>
+                            
+                                <span>传真</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">聂军 经济与管理学院 院长 </div>
+                                <div class="url text-gray-600 break-all">电话：+86-27-68753105 电邮：niejun@whu.edu.cn</div>
+                            </div>
+                            <a href="mailto:niejun@whu.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">Hong Kong Baptist University香港浸会大学</div>
+                                <div class="url text-gray-600 break-all">gs@hkbu.edu.hk</div>
+                            </div>
+                            <a href="mailto:gs@hkbu.edu.hk" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">Student Exchange Programme of Hong Kong Baptist University香港浸会大学交换生项目</div>
+                                <div class="url text-gray-600 break-all">exchange@hkbu.edu.hk</div>
+                            </div>
+                            <a href="mailto:exchange@hkbu.edu.hk" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">香港電台新聞網 - RTHK</div>
+                                <div class="url text-gray-600 break-all">cnews@rthk.hk</div>
+                            </div>
+                            <a href="mailto:cnews@rthk.hk" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">am730|香港即時新聞、生活資訊、財經地產及專欄</div>
+                                <div class="url text-gray-600 break-all">news@am730.com.hk</div>
+                            </div>
+                            <a href="mailto:news@am730.com.hk" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">HK01|LinkedIn</div>
+                                <div class="url text-gray-600 break-all">hk01@hk01.com</div>
+                            </div>
+                            <a href="mailto:hk01@hk01.com" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">Hong Kong|世界華文媒體有限公司</div>
+                                <div class="url text-gray-600 break-all">inews@mingpao.com</div>
+                            </div>
+                            <a href="mailto:inews@mingpao.com" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">教育部统一监督举报邮箱</div>
+                                <div class="url text-gray-600 break-all">12391@moe.edu.cn</div>
+                            </div>
+                            <a href="mailto:12391@moe.edu.cn" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>发送邮件</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">中华人民共和国教育部</div>
+                                <div class="url text-gray-600 break-all">总机：010-66096114</div>
+                            </div>
+                            
+                                <span>打电话</span>
+                                <i class="fa fa-envelope ml-2"></i>
+                            </a>
+
+
+                        </div>
+
+                        <div class="report-item flex flex-wrap items-center justify-between p-4 border border-gray-100 rounded-lg hover:border-primary/30 transition-standard">
+                            <div class="address-info">
+                                <div class="address text-lg font-semibold text-gray-800">教育部学位与研究生教育发展中心</div>
+                                <div class="url text-gray-600 break-all">https://www.cdgdc.edu.cn/</div>
+                            </div>
+                            <a href="https://www.cdgdc.edu.cn/" target="_blank" class="mt-3 sm:mt-0 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg flex items-center transition-standard">
+                                <span>跳转</span>
+                                <i class="fa fa-external-link ml-2"></i>
+                            </a>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-gray-300 mt-12 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>广厦吧</p>
+            <!--<p class="mt-2 text-sm">服务热线：400-123-4567（工作日 9:00-18:00）</p>-->
+        </div>
+    </footer>
+
+    <!-- 复制成功提示 -->
+    <div id="copyToast" class="fixed top-5 right-5 bg-green-500 text-white px-5 py-3 rounded-lg shadow-lg transform translate-x-full transition-standard opacity-0 flex items-center">
+        <i class="fa fa-check-circle mr-2"></i>
+        <span>复制成功！</span>
+    </div>
+
+    <script>
+        // 复制功能实现
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            // 获取要复制的文本内容
+            const copyContent = document.getElementById('copyContent').innerText;
+            
+            // 复制到剪贴板
+            navigator.clipboard.writeText(copyContent).then(() => {
+                // 显示复制成功提示
+                const toast = document.getElementById('copyToast');
+                toast.classList.remove('translate-x-full', 'opacity-0');
+                toast.classList.add('translate-x-0', 'opacity-100');
+                
+                // 3秒后隐藏提示
+                setTimeout(() => {
+                    toast.classList.remove('translate-x-0', 'opacity-100');
+                    toast.classList.add('translate-x-full', 'opacity-0');
+                }, 3000);
+            }).catch(err => {
+                console.error('复制失败: ', err);
+                alert('复制失败，请手动复制');
+            });
+        });
+
+        // 为所有链接添加点击效果
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                this.classList.add('scale-95');
+                setTimeout(() => {
+                    this.classList.remove('scale-95');
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
