@@ -12,6 +12,7 @@
 - ✅ [Timeline](./disclosure/timeline.md)
 - ✅ [Allegations](./disclosure/allegations.md)
 - ❎ references.md
+- ✅ [Report](./report.html)
 
 <div align="center">
   <a href="README-en_US"
